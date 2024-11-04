@@ -6,7 +6,7 @@ import Slide from './Slide';
 import DotsIndicator from '@/app/components/DotsIndicator';
 
 const slides = [
-  { title: 'Simplify Your Finances', content: 'All your assets, right at your fingertips. Finch makes finance fun and incredibly easy. Buy, send and invest in a couple taps.', image: '/Home_iPhone.png' },
+  { title: 'Simplify Your Finances', content: 'All your assets, right at your fingertips. Finch makes finance fun and incredibly easy. Buy, send and invest in a of couple taps.', image: '/Home_iPhone.png' },
   { title: 'Invest in the Future', content: "Embrace the future of finance with access to the latest investment strategies. Be among the first to leverage innovative technology. Redefine your financial journey and unlock new possibilities today.", image: '/FinchStrat.png' },
   { title: 'Effortless Payments', content: 'Send money in seconds — smooth, simple, and secure. Transfer funds instantly, whether crypto or cash. Worry free.', image: '/Finch social.png' },
 ];
