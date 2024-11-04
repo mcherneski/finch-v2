@@ -38,8 +38,10 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
 
   const interestOptions = [
     { id: 'save-time', label: 'Save Time' },
-    { id: 'defi-engagement', label: 'Engage more with DeFi' },
-    { id: 'consolidated-finance', label: 'Consolidated finance experience' }
+    { id: 'easy-earning', label: 'Easy Earning' },
+    { id: 'simple-defi', label: 'Simplified DeFi' },
+    { id: 'consolidated-finance', label: 'Consolidated finance experience' },
+    { id: 'new-tech', label: 'I love new tech' }
   ];
 
   const handleInterestToggle = (interest: string) => {
@@ -99,7 +101,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-sky-800 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl max-h-[90vh] relative overflow-hidden"
+            className="bg-sky-800 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl max-h-[80vh] relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-sky-500 opacity-20 blur-lg rounded-xl"></div> {/* Glowing effect */}
             <div className="overflow-y-auto h-full pr-4">
