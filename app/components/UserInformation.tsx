@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { userFormSchema, type UserFormData } from '@/app/lib/validations/userForm';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface UserInformationProps {
   isOpen: boolean;
@@ -24,6 +24,17 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Check if the keyboard is likely visible by comparing window.innerHeight to screen.height
+      setIsKeyboardVisible(window.innerHeight < screen.height - 100);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const interestOptions = [
     { id: 'save-time', label: 'Save Time' },
@@ -81,7 +92,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
     <AnimatePresence>
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 ${isKeyboardVisible ? 'pb-20' : ''}`}
           onClick={handleBackdropClick}
         >
           <motion.div
