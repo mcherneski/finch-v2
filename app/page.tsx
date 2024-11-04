@@ -62,7 +62,7 @@ export default function Home() {
               className="w-[200px] px-6 py-3 bg-yellow-500 text-sky-800 rounded-lg text-base font-medium
               hover:bg-yellow-400 transition-colors whitespace-nowrap md:w-auto md:text-base"
             >
-              Sign Up for Birdwatch
+              Sign Up to Birdwatch
             </button>
           </div>
         </div>
