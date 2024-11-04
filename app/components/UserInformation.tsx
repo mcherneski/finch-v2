@@ -37,11 +37,9 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
   }, []);
 
   const interestOptions = [
-    { id: 'save-time', label: 'Save Time' },
     { id: 'easy-earning', label: 'Easy Earning' },
     { id: 'simple-defi', label: 'Simplified DeFi' },
-    { id: 'consolidated-finance', label: 'Consolidated finance experience' },
-    { id: 'new-tech', label: 'I love new tech' }
+    { id: 'consolidated-finance', label: 'Consolidated finance experience' }
   ];
 
   const handleInterestToggle = (interest: string) => {
