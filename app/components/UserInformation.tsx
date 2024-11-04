@@ -99,11 +99,11 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-sky-800 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl max-h-[80vh] relative overflow-hidden"
+            className="bg-sky-800 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl max-h-[90vh] overflow-y-auto relative"
           >
-            <div className="absolute inset-0 bg-sky-500 opacity-20 blur-lg rounded-xl"></div> {/* Glowing effect */}
-            <div className="overflow-y-auto h-full pr-4">
-              <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 relative z-10">
+            <div className="absolute inset-0 bg-sky-500 opacity-20 blur-lg rounded-xl"></div>
+            <div className="relative z-10">
+              <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
                 <h2 className="text-xl font-bold text-white mb-4">Tell us about yourself</h2>
                 
                 {/* Honeypot Field */}
