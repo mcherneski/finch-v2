@@ -1,101 +1,101 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import VerticalCarousel from './components/VerticalCarousel';
+import UserInformation from './components/UserInformation';
+import { UserFormData } from '@/app/lib/validations/userForm';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleUserSubmit = async (data: UserFormData) => {
+    try {
+      console.log('Form submitted:', data);
+    } catch (error) {
+      console.error('Submission error:', error);
+    }
+  };
+
+  return (
+    <div className='h-screen overflow-hidden bg-gradient-to-r from-sky-800 to-sky-500 relative'>
+      <div className='flex flex-col md:flex-row h-full'>
+        <div className='flex flex-col w-full md:w-1/2 p-4 space-y-4 md:justify-center md:items-center'>
+          {/* Mobile Layout (flex-row for logo and social) */}
+          <div className="flex flex-row justify-between items-center md:flex-col md:space-y-4 w-full">
+            <div className="w-[300px] md:w-[400px] lg:w-[440px]">
+              <Image 
+                src='/logo_full.png' 
+                alt='Finch Logo' 
+                width={440} 
+                height={440}
+                className="w-full h-auto"
+              />
+            </div>
+            <Link 
+              href="https://twitter.com/finchmoneyapp" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="md:hidden text-black hover:text-gray-800 transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+            >
+              <svg 
+                className="w-4 h-4 sm:w-5 sm:h-5" 
+                fill="currentColor" 
+                viewBox="0 0 24 24" 
+                aria-hidden="true"
+              >
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </Link>
+          </div>
+          
+          <div className="flex justify-center w-full py-4">
+            <p className="text-white text-center text-sm md:text-base max-w-md">
+              Stay up to date with the latest product developments! Sign up for Birdwatch to receive important updates in your inbox.
+            </p>
+          </div>
+
+          <div className="flex justify-center w-full pt-2">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="w-[200px] px-6 py-3 bg-yellow-500 text-sky-800 rounded-lg text-base font-medium
+              hover:bg-yellow-400 transition-colors whitespace-nowrap md:w-auto md:text-base"
+            >
+              Sign Up for Birdwatch
+            </button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        
+        <div className='w-full md:w-1/2 flex justify-end items-center h-full md:h-full'>
+          <div className='w-full h-full bg-gradient-to-b md:bg-gradient-to-br from-sky-200 to-sky-500 rounded-t-[50px] md:rounded-tl-[50px] md:rounded-tr-none shadow-3xl'>
+            <VerticalCarousel />
+          </div>
+        </div>
+      </div>
+      
+      {/* Desktop social button */}
+      <Link 
+        href="https://twitter.com/finchmoneyapp" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="hidden md:block absolute bottom-8 z-10 left-8 text-black hover:text-gray-800 transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      >
+        <svg 
+          className="w-6 h-6" 
+          fill="currentColor" 
+          viewBox="0 0 24 24" 
+          aria-hidden="true"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </Link>
+
+      <UserInformation 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleUserSubmit}
+      />
     </div>
   );
 }
