@@ -8,7 +8,7 @@ interface SlideProps {
 
 export default function Slide({ title, content, image }: SlideProps) {
   return (
-    <div className="flex flex-row items-start justify-center h-full p-4 sm:p-8 space-x-4 sm:space-x-6 overflow-hidden">
+    <div className="flex flex-row items-start justify-center h-full p-4 mx-2 sm:p-8 space-x-4 sm:space-x-6 overflow-hidden">
       <div className="flex-shrink-0 -ml-4 sm:-ml-10">
         <Image 
           src={image} 

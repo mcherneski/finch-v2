@@ -13,9 +13,11 @@ const slides = [
 
 export default function VerticalCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 10000);
 
@@ -23,6 +25,7 @@ export default function VerticalCarousel() {
   }, [activeIndex]);
 
   const handleDotClick = (index: number) => {
+    setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
   };
 
@@ -33,15 +36,19 @@ export default function VerticalCarousel() {
     if (Math.abs(offset.x) > Math.abs(offset.y)) {
       // Horizontal swipe
       if (offset.x > SWIPE_THRESHOLD && activeIndex > 0) {
+        setDirection(-1);
         setActiveIndex(prev => prev - 1);
       } else if (offset.x < -SWIPE_THRESHOLD && activeIndex < slides.length - 1) {
+        setDirection(1);
         setActiveIndex(prev => prev + 1);
       }
     } else {
       // Vertical swipe
       if (offset.y > SWIPE_THRESHOLD && activeIndex > 0) {
+        setDirection(-1);
         setActiveIndex(prev => prev - 1);
       } else if (offset.y < -SWIPE_THRESHOLD) {
+        setDirection(1);
         setActiveIndex(prev => (prev + 1) % slides.length);
       }
     }
@@ -49,14 +56,14 @@ export default function VerticalCarousel() {
 
   return (
     <div className="relative w-full h-[60vh] md:h-full overflow-hidden pt-4 md:pt-12 pb-12">
-      <AnimatePresence mode="wait">
+      <AnimatePresence custom={direction} mode="wait">
         {slides.map((slide, index) => (
           index === activeIndex && (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: direction > 0 ? 100 : -100 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -100 }}
+              exit={{ opacity: 0, y: direction > 0 ? -100 : 100 }}
               transition={{
                 type: "spring",
                 stiffness: 100,
