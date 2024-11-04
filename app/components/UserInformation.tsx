@@ -18,7 +18,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
     defaultValues: {
       cryptoFamiliarity: 0,
       interests: [],
-      walletAddress: '0x0000000000000000000000000000000000000000',
+      walletAddress: '',
       email: '',
       honeypot: '',
     }
@@ -197,7 +197,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
                     <input
                       {...register('walletAddress')}
                       type="text"
-                      placeholder="0xAddress"
+                      placeholder="Ethereum, ENS, BNB, BTC, or Solana address"
                       className="w-full px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm 
                         border border-white/20 text-white placeholder-white/70 text-base
                         focus:outline-none focus:ring-2 focus:ring-white/30
