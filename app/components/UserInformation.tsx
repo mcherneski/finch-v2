@@ -4,7 +4,7 @@ import { userFormSchema, type UserFormData } from '@/app/lib/validations/userFor
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
-import ErrorModal from './ErrorModal'; // Import the ErrorModal component
+import ErrorModal from './ErrorModal';
 
 interface UserInformationProps {
   isOpen: boolean;
@@ -25,7 +25,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
 
   const [isLoading, setIsLoading] = useState(false);
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
-  const [error, setError] = useState<string | null>(null); // State to manage error messages
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,17 +69,17 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
       console.log('Form submitted:', result);
       onSubmit(data);
       reset(); // Clear the form fields after submission
-      onClose();
+      onClose(); // Close the modal after successful submission
     } catch (error) {
       console.error('Submission error:', error);
-      setError('There was an issue submitting the form. Please try again.'); // Set error message
+      setError('There was an issue submitting the form. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleCancel = () => {
-    reset(); // Clear the form fields when canceled
+    reset();
     onClose();
   };
 
