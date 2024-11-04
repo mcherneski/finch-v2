@@ -17,10 +17,10 @@ export default function VerticalCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 8000);
+    }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [activeIndex]);
 
   const handleDotClick = (index: number) => {
     setActiveIndex(index);
