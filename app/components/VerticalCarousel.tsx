@@ -41,8 +41,8 @@ export default function VerticalCarousel() {
       // Vertical swipe
       if (offset.y > SWIPE_THRESHOLD && activeIndex > 0) {
         setActiveIndex(prev => prev - 1);
-      } else if (offset.y < -SWIPE_THRESHOLD && activeIndex < slides.length - 1) {
-        setActiveIndex(prev => prev + 1);
+      } else if (offset.y < -SWIPE_THRESHOLD) {
+        setActiveIndex(prev => (prev + 1) % slides.length);
       }
     }
   };
