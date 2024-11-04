@@ -20,7 +20,7 @@ export default function Slide({ title, content, image }: SlideProps) {
       </div>
       <div className="flex flex-col max-w-xs mt-8 mr-2 pr-2 space-y-4">
         <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold mb-2">{title}</h2>
-        <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed" style={{ textIndent: '1em' }}>
+        <p className="text-sm sm:text-base md:text-lg font-light leading-relaxed mr-4">
           {content}
         </p>
       </div>
