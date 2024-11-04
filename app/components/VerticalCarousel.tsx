@@ -55,7 +55,7 @@ export default function VerticalCarousel() {
   };
 
   return (
-    <div className="relative w-full h-[60vh] md:h-full overflow-hidden pt-4 md:pt-12 pb-12 px-4 md:px-0">
+    <div className="relative w-full h-[60vh] md:h-full overflow-hidden pt-4 md:pt-12 pb-12 mx-4 md:mx-0">
       <AnimatePresence custom={direction} mode="wait">
         {slides.map((slide, index) => (
           index === activeIndex && (

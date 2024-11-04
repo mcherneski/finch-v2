@@ -18,6 +18,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
     defaultValues: {
       cryptoFamiliarity: 0,
       interests: [],
+      walletAddress: '0x0000000000000000000000000000000000000000',
       email: '',
       honeypot: '',
     }
@@ -119,7 +120,7 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
 
                   {/* Crypto Familiarity */}
                   <div className="space-y-1">
-                    <label className="block text-white text-sm">How familiar are you with crypto?</label>
+                    <label className="block text-white text-sm">How familiar are you with crypto? <span className="text-yellow-500">*</span></label>
                     <div className="relative">
                       <div className="flex gap-2 justify-between">
                         <div className="flex flex-col items-center">
@@ -188,6 +189,23 @@ export default function UserInformation({ isOpen, onClose, onSubmit }: UserInfor
                         </button>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Wallet Address */}
+                  <div className="space-y-1">
+                    <label className="block text-white text-sm">Wallet Address</label>
+                    <input
+                      {...register('walletAddress')}
+                      type="text"
+                      placeholder="0xAddress"
+                      className="w-full px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm 
+                        border border-white/20 text-white placeholder-white/70 text-base
+                        focus:outline-none focus:ring-2 focus:ring-white/30
+                        hover:bg-white/20 transition-all"
+                    />
+                    {errors.walletAddress && (
+                      <p className="text-red-400 text-xs">{errors.walletAddress.message}</p>
+                    )}
                   </div>
 
                   {/* Email */}

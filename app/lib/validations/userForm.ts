@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const userFormSchema = z.object({
-  cryptoFamiliarity: z.number().min(1).max(5),
+  cryptoFamiliarity: z.number().min(1, 'Please select your familiarity with crypto').max(5),
   interests: z.array(z.string()).min(0),
   walletAddress: z.string()
     .regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid Ethereum address')
